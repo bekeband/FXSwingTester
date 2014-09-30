@@ -12,21 +12,26 @@ import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
 import javax.swing.JApplet;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
-/**
- *
- * @author user
+
+
+
+/*
+ * @author Beke András
  */
+
+
+
 public class JavaFXSwingApplication1 extends JApplet {
   
-  private static final int JFXPANEL_WIDTH_INT = 300;
-  private static final int JFXPANEL_HEIGHT_INT = 250;
+  private static final int JFXPANEL_WIDTH_INT = 600;
+  private static final int JFXPANEL_HEIGHT_INT = 450;
   private static JFXPanel fxContainer;
 
   /**
@@ -76,18 +81,30 @@ public class JavaFXSwingApplication1 extends JApplet {
   }
   
   private void createScene() {
+    //A radio button with an empty string for its label
+    RadioButton rb1 = new RadioButton();
+    //Setting a text label
+    rb1.setText("Home");
+    //A radio button with the specified label
+    RadioButton rb2 = new RadioButton("Calendar");
+    
     Button btn = new Button();
-    btn.setText("Say 'Hello World'");
+    btn.setText("Mondd 'Helló Világ!'");
     btn.setOnAction(new EventHandler<ActionEvent>() {
       
       @Override
       public void handle(ActionEvent event) {
-        System.out.println("Hello World!");
+        System.err.println("Button handle activated.");
+        ColorChooserDialog.createAndShowGUI();
       }
+      
     });
-    StackPane root = new StackPane();
+    TilePane root = new TilePane();
     root.getChildren().add(btn);
+    root.getChildren().add(rb1);
+    root.getChildren().add(rb2);
+    
     fxContainer.setScene(new Scene(root));
   }
-  
+    
 }
